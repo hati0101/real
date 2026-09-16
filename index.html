@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="REAL 서버에서 현재 접근 가능한 확률형 콘텐츠와 판정 기준을 안내합니다.">
+  <title>REAL | 확률 안내</title>
+  <style>
+    :root {
+      --bg: #151f2e;
+      --surface: #303e4f;
+      --surface-deep: #101827;
+      --line: #4c6280;
+      --text: #f1f6fc;
+      --muted: #c9d6e2;
+      --blue: #70aaf5;
+      --mint: #a8e7cf;
+      --warning: #ffd089;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif; line-height: 1.65; }
+    a { color: inherit; }
+    .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+    header { border-bottom: 1px solid var(--line); background: rgba(16,24,39,.92); position: sticky; top: 0; z-index: 2; backdrop-filter: blur(10px); }
+    .topbar { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-size: 20px; font-weight: 800; letter-spacing: .04em; text-decoration: none; }
+    .brand span { color: var(--blue); }
+    nav { display: flex; gap: 18px; font-size: 14px; color: var(--muted); }
+    nav a { text-decoration: none; }
+    nav a:hover, nav a:focus-visible { color: var(--mint); }
+    .hero { padding: 76px 0 50px; background: radial-gradient(800px 350px at 70% -20%, rgba(112,170,245,.24), transparent 70%); }
+    .eyebrow { margin: 0 0 10px; color: var(--blue); font-weight: 800; letter-spacing: .12em; font-size: 13px; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(36px, 7vw, 64px); line-height: 1.16; letter-spacing: -.05em; }
+    .hero p { max-width: 680px; margin: 22px 0 0; color: var(--muted); font-size: 18px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 34px; }
+    .step { background: #18243a; padding: 12px 16px; color: var(--blue); font-weight: 800; text-align: center; font-size: 14px; }
+    main { padding: 30px 0 80px; }
+    .notice { border: 1px solid rgba(168,231,207,.5); background: rgba(168,231,207,.08); padding: 18px 20px; color: var(--muted); }
+    .notice strong { color: var(--mint); }
+    section { margin-top: 48px; }
+    h2 { margin: 0 0 8px; font-size: clamp(24px, 4vw, 32px); letter-spacing: -.03em; }
+    .section-note { margin: 0 0 20px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .card { border: 1px solid var(--line); background: var(--surface-deep); padding: 20px; }
+    .card h3 { margin: 0 0 8px; color: var(--blue); font-size: 17px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .rate { display: block; margin-top: 12px; color: var(--mint); font-size: 20px; font-weight: 800; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); }
+    table { width: 100%; border-collapse: collapse; min-width: 700px; background: var(--surface-deep); }
+    th, td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(76,98,128,.55); }
+    th { background: #18243a; color: var(--blue); font-size: 13px; letter-spacing: .03em; }
+    td { color: var(--muted); font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+    .rate-inline { color: var(--mint); font-weight: 800; white-space: nowrap; }
+    .pending { color: var(--warning); }
+    footer { border-top: 1px solid var(--line); color: var(--muted); padding: 26px 0 38px; font-size: 13px; }
+    :focus-visible { outline: 3px solid var(--mint); outline-offset: 3px; }
+    @media (max-width: 680px) { .shell { width: min(100% - 24px, 1080px); } .topbar { min-height: 58px; gap: 10px; } .brand { font-size: 16px; white-space: nowrap; } nav { gap: 8px; font-size: 11px; white-space: nowrap; } .hero { padding-top: 52px; } .hero p { font-size: 16px; } .steps, .grid { grid-template-columns: 1fr; } .step { text-align: left; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell topbar">
+      <a class="brand" href="#top">REAL <span>PROBABILITY</span></a>
+      <nav aria-label="페이지 탐색"><a href="#systems">운영 확률</a><a href="#boxes">확률형 상자</a><a href="#standard">표기 기준</a></nav>
+    </div>
+  </header>
+
+  <div id="top" class="hero">
+    <div class="shell">
+      <p class="eyebrow">REAL SERVER</p>
+      <h1>확률 안내</h1>
+      <p>현재 서버에서 접근 가능한 확률형 콘텐츠의 판정 방식과 핵심 수치를 안내합니다.</p>
+      <div class="steps" aria-label="확률 안내 원칙">
+        <div class="step">01&nbsp;&nbsp;운영 경로 확인</div>
+        <div class="step">02&nbsp;&nbsp;판정식 기준 공개</div>
+        <div class="step">03&nbsp;&nbsp;변경 시 기준일 갱신</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="shell">
+    <aside class="notice"><strong>안내</strong> 이 페이지는 현재 접근 경로가 확인된 운영 콘텐츠만 다룹니다. 각 확률은 서버 판정 기준이며, 개인별 실제 결과는 독립 시행과 보유 상태에 따라 달라질 수 있습니다.</aside>
+
+    <section id="systems">
+      <h2>운영 확률</h2>
+      <p class="section-note">주요 성장·라운지 콘텐츠의 핵심 판정입니다.</p>
+      <div class="grid">
+        <article class="card"><h3>카드 합성</h3><p>같은 등급 카드 4장으로 다음 등급을 시도합니다. 성공 시 결과 풀에서 가중치로 선택하며, 실패 시 투입 카드 1장을 돌려받습니다.</p><span class="rate">25% · 20% · 15% · 10%</span></article>
+        <article class="card"><h3>차원의 시련</h3><p>난이도와 총 획득 AP의 차이로 보상 성공률이 달라집니다. 맵·일반 몬스터·보스 속성도 매 입장마다 무작위입니다.</p><span class="rate">25% ~ 90%</span></article>
+        <article class="card"><h3>의상 스톤 인챈트</h3><p>라운지 및 프론테라 의상 인챈트 NPC에서 스톤 1개를 사용합니다. 실패하면 스톤만 소모됩니다.</p><span class="rate">성공 60%</span></article>
+        <article class="card"><h3>카드 분리</h3><p>분리 방식별 성공률이 다릅니다. 실패 시 장비와 카드는 유지되며 시도 비용만 소모됩니다.</p><span class="rate">4% · 10% · 20% · 100%</span></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="table-wrap">
+        <table>
+          <caption style="position:absolute;left:-9999px">현재 접근 가능한 운영 확률 목록</caption>
+          <thead><tr><th>콘텐츠</th><th>판정 방식</th><th>핵심 확률</th></tr></thead>
+          <tbody>
+            <tr><td>제련</td><td>제련 등급과 재료별 DB 확률을 사용합니다. +10 이상은 대장장이의 축복이 필수입니다.</td><td class="rate-inline">(Rate + 1) / 10,000</td></tr>
+            <tr><td>등급 강화</td><td>등급별 Chance에 축복 보정이 적용됩니다.</td><td class="rate-inline">등급별 상이</td></tr>
+            <tr><td>보스 포인트 무작위 카드</td><td>대상 카드 54종 중 균등 선택입니다.</td><td class="rate-inline">각 1.8519%</td></tr>
+            <tr><td>4차 쉐도우 리폼</td><td>랜덤 옵션 2줄을 가중치 풀에서 다시 부여합니다.</td><td class="rate-inline">옵션별 상이</td></tr>
+            <tr><td>피어싱</td><td>소켓 부여는 각 NPC에서 독립 판정합니다.</td><td class="rate-inline">성공 25%</td></tr>
+            <tr><td>능력치 부여</td><td>STR·AGI·VIT·INT·DEX·LUK·DEF·MDEF 중 하나를 균등 선택합니다.</td><td class="rate-inline">각 12.5%</td></tr>
+            <tr><td>처치 보너스 드롭</td><td>조건을 충족한 처치에서 8종을 각각 독립 판정합니다.</td><td class="rate-inline">레벨별 상이</td></tr>
+            <tr><td>보스 재출현 지연</td><td>재출현에 추가 지연 시간을 균등 적용합니다.</td><td class="rate-inline">60 ~ 300초</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="boxes">
+      <h2>확률형 상자</h2>
+      <p class="section-note">현재 공급 경로가 확인된 핵심 상자 계열입니다. 구성품과 세부 가중치는 콘텐츠 변경 시 함께 갱신합니다.</p>
+      <div class="grid">
+        <article class="card"><h3>카츄아의 비밀상자</h3><p>마일리지 쿠폰 1장은 확정 지급되고, 추가 구성품은 가중치로 선택됩니다.</p></article>
+        <article class="card"><h3>황금인장 카드</h3><p>서버 전체 공유 풀 방식입니다. 개별 개봉 결과는 풀 상태에 따라 달라질 수 있습니다.</p></article>
+        <article class="card"><h3>마력이 깃든 카드첩</h3><p>구성품마다 가중치가 다른 카드첩입니다.</p></article>
+        <article class="card"><h3>봉인된 보스 카드첩</h3><p>대상 보스 카드 44종을 균등하게 선택합니다.</p><span class="rate">각 2.2727%</span></article>
+      </div>
+    </section>
+
+    <section id="standard">
+      <h2>표기 기준</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>구분</th><th>안내 기준</th></tr></thead>
+          <tbody>
+            <tr><td>기준일</td><td>2026-09-16</td></tr>
+            <tr><td>포함 범위</td><td>현재 서버에서 로드되고 접근 경로가 확인된 확률형 콘텐츠</td></tr>
+            <tr><td>제외 범위</td><td>비활성 기능, 진입·획득 경로 미확인 항목, 클라이언트 데이터만 존재하는 항목</td></tr>
+            <tr><td>유의 사항</td><td class="pending">실제 계정 사용 이력, 몬스터 스폰, SQL 보상값은 이 페이지의 검증 범위에 포함하지 않습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">REAL SERVER · 확률 안내 · 기준일 2026-09-16</div></footer>
+</body>
+</html>
